@@ -18,9 +18,7 @@ const Home = () => {
           <img src="images/logo-oppo.png" alt="oppo" />
         </div>
       </div>
-
       {/* Body Box */}
-
       <div className="bodyBox">
         <div>
           <img src="images/track1.svg" alt="image" />
@@ -52,9 +50,7 @@ const Home = () => {
           <img src="images/bike.svg" alt="image" />
         </div>
       </div>
-
       {/* Services */}
-
       <div className="services">
         <h2>How It Works</h2>
         <div className="servicesBox">
@@ -97,9 +93,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       {/* About Us */}
-
       <div className="about">
         <div>
           <img src="/images/boxes.svg" alt="about image" />
@@ -117,7 +111,6 @@ const Home = () => {
           </p>
         </div>
       </div>
-
       {/* <!----testimonial--> */}
       <div class="testimonial">
         <h2>Testimonials</h2>
@@ -127,7 +120,6 @@ const Home = () => {
             <div class="col-3">
               <i class="fa fa-quote-left"> </i>
               <p>
-                {" "}
                 I am pleased with The Mi smart band 4 features a 39.9% larger
                 (Than Mi band 3) Amoled color full-touch display width.
               </p>
@@ -144,7 +136,6 @@ const Home = () => {
             <div class="col-3">
               <i class="fa fa-quote-left"> </i>
               <p>
-                {" "}
                 I am pleased with The Mi smart band 4 features a 39.9% larger
                 (Than Mi band 3) Amoled color full-touch display width.
               </p>
@@ -161,7 +152,6 @@ const Home = () => {
             <div class="col-3">
               <i class="fa fa-quote-left"> </i>
               <p>
-                {" "}
                 I am pleased with The Mi smart band 4 features a 39.9% larger
                 (Than Mi band 3) Amoled color full-touch display width.
               </p>
@@ -179,7 +169,6 @@ const Home = () => {
         </div>
       </div>
       {/* Contact us */}
-
       <section id="contact">
         <h2 className="section-header">Contact</h2>
 
@@ -195,7 +184,6 @@ const Home = () => {
                   id="name"
                   placeholder="NAME"
                   name="name"
-                  value=""
                   required
                 />
               </div>
@@ -209,7 +197,6 @@ const Home = () => {
                   id="email"
                   placeholder="EMAIL"
                   name="email"
-                  value=""
                   required
                 />
               </div>
@@ -230,7 +217,9 @@ const Home = () => {
               value="SEND"
             >
               <div className="alt-send-button">
-               <span><i className="fa sendIcon fa-paper-plane"></i></span> 
+                <span>
+                  <i className="fa sendIcon fa-paper-plane"></i>
+                </span>
                 <span className="send-text">SEND</span>
               </div>
             </button>

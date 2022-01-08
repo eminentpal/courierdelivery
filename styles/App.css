@@ -384,6 +384,7 @@ Body Box */
 
 .fa.fa-quote-left {
   font-size: 34px;
+
   color: #ff523b;
 }
 
@@ -430,7 +431,6 @@ Body Box */
 #contact {
   width: 100%;
   height: 100%;
-
 }
 /* 
 #contact h2 {
@@ -510,7 +510,7 @@ textarea {
   text-align: center;
   margin: 0 auto;
   padding: 40px 0;
-  font: 300 60px 'Oswald', sans-serif;
+  font: 300 60px "Oswald", sans-serif;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 6px;
@@ -530,48 +530,60 @@ textarea {
 .form-horizontal {
   /*float: left;...*/
   max-width: 400px;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: 400;
 }
 
-.form-control, 
 textarea {
-  max-width: 500px;
+  width: 400px;
   background-color: #000;
   color: #fff;
   letter-spacing: 1px;
 }
 
+.form-control {
+  width: 400px;
+  background-color: rgb(65, 134, 161);
+  color: #fff;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  padding: 10px 10px;
+  border: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+.form-control::placeholder {
+  color: #ffffff;
+}
 
 .send-button {
   margin-top: 15px;
-
+  background-color: rgb(38, 98, 153);
   height: 34px;
   width: 400px;
   overflow: hidden;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid grey;
 }
 
 .alt-send-button {
   width: 400px;
   height: 34px;
-
-  transition: all .2s ease-in-out;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
 }
 
 .send-text {
   display: block;
   margin-top: 12px;
 
-  font: 700 12px 'Lato', sans-serif;
+  font: 700 12px "Lato", sans-serif;
   letter-spacing: 2px;
 }
 
-.sendIcon{
+.sendIcon {
   margin-top: 10px;
 }
-
-
 
 .alt-send-button:hover {
   transform: translate3d(0px, -29px, 0px);
@@ -595,7 +607,7 @@ textarea {
 }
 
 .contact-text {
-  font: 300 18px 'Lato', sans-serif;
+  font: 300 18px "Lato", sans-serif;
   letter-spacing: 1.9px;
   color: #bbb;
 }
@@ -623,7 +635,6 @@ textarea {
   text-decoration: none;
 }
 
-
 /* Social Media Icons */
 .social-media-list {
   position: relative;
@@ -639,7 +650,7 @@ textarea {
 }
 
 .social-media-list li {
-  position: relative; 
+  position: relative;
   display: inline-block;
   text-align: center;
   height: 60px;
@@ -648,13 +659,13 @@ textarea {
   line-height: 60px;
   border-radius: 50%;
   color: #fff;
-  background-color: rgb(27,27,27);
-  cursor: pointer; 
-  transition: all .2s ease-in-out;
+  background-color: rgb(27, 27, 27);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .social-media-list li:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -665,44 +676,42 @@ textarea {
 
   opacity: 0;
   box-shadow: 0 0 0 1px #fff;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .social-media-list li:hover {
-  background-color: #fff; 
+  background-color: #fff;
 }
 
 .social-media-list li:hover:after {
-  opacity: 1;  
+  opacity: 1;
   transform: scale(1.12);
-  transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
+  transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
 }
 
 .social-media-list li:hover a {
   color: #000;
 }
 
-.social-media-list li a{
+.social-media-list li a {
   position: absolute;
   top: 0;
   right: 0;
-bottom: 0;
-left: 0;
+  bottom: 0;
+  left: 0;
 
-
-  margin:  auto;
-  
+  margin: auto;
 }
 
 .copyright {
-  font: 200 14px 'Oswald', sans-serif;
+  font: 200 14px "Oswald", sans-serif;
   color: #555;
   letter-spacing: 1px;
   text-align: center;
 }
 
 hr {
-  border-color: rgba(255,255,255,.6);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Begin Media Queries*/
@@ -711,14 +720,15 @@ hr {
     display: flex;
     flex-direction: column;
   }
-  .direct-contact-container, .form-horizontal {
+  .direct-contact-container,
+  .form-horizontal {
     margin: 0 auto;
-  }  
-  
+  }
+
   .direct-contact-container {
     margin-top: 60px;
     max-width: 300px;
-  }    
+  }
   .social-media-list li {
     height: 60px;
     width: 60px;
@@ -732,25 +742,26 @@ hr {
 }
 
 @media screen and (max-width: 569px) {
-
-  .direct-contact-container, .form-wrapper {
+  .direct-contact-container,
+  .form-wrapper {
     float: none;
     margin: 0 auto;
-  }  
-  .form-control, textarea {
-    
+  }
+  .form-control,
+  textarea {
     margin: 0 auto;
   }
- 
-  
-  .name, .email, textarea {
+
+  .name,
+  .email,
+  textarea {
     width: 280px;
-  } 
-  
+  }
+
   .direct-contact-container {
     margin-top: 60px;
     max-width: 280px;
-  }  
+  }
   .social-media-list {
     left: 0;
   }
@@ -765,7 +776,6 @@ hr {
     height: 55px;
     line-height: 55px;
   }
-  
 }
 
 @media screen and (max-width: 410px) {
@@ -775,3 +785,19 @@ hr {
 }
 /* 
 contact us ends here */
+
+.test {
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+  background: blue;
+}
+
+.test h2 {
+  margin-top: 120px;
+  color: white;
+}
+
+.test h2:hover {
+  transform: translateY(120);
+}
