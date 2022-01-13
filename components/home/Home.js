@@ -8,7 +8,25 @@ const Home = () => {
 
   return (
     <div className="bodyContainer">
+      <div className="header">
+        <div className="headerBody">
+          <div className="headerBody-1">
+            <h1>
+              Fast And <span>Urgent</span> Courier Delivery Services
+            </h1>
+            <p>
+              Do you need a fast delivery service? Then you are at the right
+              place.We offer the fastest delivery service.
+            </p>
+            <button>Request Delivery</button>
+          </div>
+          <div>
+            <img src="images/delivery.png" alt="image" />
+          </div>
+        </div>
+      </div>
       {/* Brands */}
+
       <div className="brands">
         <div className="brandsCont">
           <img src="images/logo-coca-cola.png" alt="cocacola" />

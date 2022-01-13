@@ -2,8 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Home from "../components/home/Home";
-import Header from "../components/header/Header";
-import Footer from "../components/footer/Footer";
+
 
 export default function Homepage() {
   return (
@@ -27,9 +26,9 @@ export default function Homepage() {
       </Head>
 
       <main>
-        <Header />
+    
         <Home />
-        <Footer />
+    
       </main>
     </div>
   );

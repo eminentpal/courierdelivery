@@ -15,7 +15,7 @@ const Footer = () => {
             >
               <g
                 transform="translate(0.000000,33.000000) scale(0.021724,-0.019880)"
-                fill="grey"
+                fill="#ffffff"
                 stroke="none"
               >
                 <path
