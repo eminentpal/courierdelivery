@@ -1,5 +1,6 @@
 :root {
-  --blue: #7071b9;
+  --blue: #5c5d9b;
+  --purple: #2b074d;
   --white: #ffffff;
   --orange: #fa7669;
 }
@@ -105,7 +106,7 @@ ul li {
 
 .headerBody-1 button {
   display: inline-block;
-  background: var(--blue);
+  background: var(--orange);
   color: #fff;
   padding: 13px 20px;
   margin-top: 25px;
@@ -1068,4 +1069,22 @@ ul li {
   color: var(--blue);
   font-weight: bold;
   margin: 10px 0 30px 0;
+}
+
+/* Form page ends here */
+
+.trackDetails {
+  width: 1100px;
+  margin: auto;
+}
+
+.detailsHeader {
+  width: 800px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  margin: auto;
+  background-color: var(--blue);
 }
