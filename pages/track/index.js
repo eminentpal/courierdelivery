@@ -1,12 +1,12 @@
 import TrackDetails from "../../components/track/TrackDetails";
 import uniqid from "uniqid";
 const trackParcel = () => {
-  function CallId() {
-    const id = uniqid.time("DH");
-    console.log(id.toUpperCase());
-  }
+  //   function CallId() {
+  //     const id = uniqid.time("DH");
+  //     console.log(id.toUpperCase());
+  //   }
 
-  CallId();
+  //   CallId();
   return (
     <div>
       <TrackDetails />
