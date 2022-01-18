@@ -5,7 +5,7 @@ const TrackDetails = () => {
     <div>
       <div className="trackDetails">
         <div className="detailsHeader">
-          <h2>ORDER TRACKING DHA4GDJSH70</h2>
+          <h2>ORDER TRACKING: DHA4GDJSH70</h2>
         </div>
         <div className="progessCont">
           <Progress />
@@ -15,8 +15,7 @@ const TrackDetails = () => {
         {/* Table */}
         <div className="tableBox">
           <table>
-            <caption>Employee Data</caption>
-
+            <caption>Shipment Details</caption>
             <tbody>
               <tr>
                 <td data-label="Quantity:">2</td>
@@ -42,7 +41,7 @@ const TrackDetails = () => {
           </table>
           {/* Table 2 */}
           <table>
-            <caption>Employee Data</caption>
+            <caption>Destination</caption>
 
             <tbody>
               <tr>
@@ -70,7 +69,7 @@ const TrackDetails = () => {
 
           {/* table 3 */}
           <table>
-            <caption>Employee Data</caption>
+            <caption>Origin</caption>
 
             <tbody>
               <tr>
@@ -92,6 +91,36 @@ const TrackDetails = () => {
                 <td data-label="Description:">
                   Two sealed bags of foreign rice
                 </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {/* Table History Summary */}
+        <div className="trackHistory">
+          <table className="tableHistory">
+            <caption>History Summary</caption>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Remark</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>2020-06-10</td>
+                <td>Lagos express</td>
+                <td> In good condition</td>
+                <td>In transit</td>
+              </tr>
+
+              <tr>
+                <td>2020-06-10</td>
+                <td>Abuja express</td>
+                <td> In good condition</td>
+                <td>In transit</td>
               </tr>
             </tbody>
           </table>
