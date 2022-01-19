@@ -3,7 +3,6 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Home from "../components/home/Home";
 
-
 export default function Homepage() {
   return (
     <div>
@@ -19,6 +18,7 @@ export default function Homepage() {
           src="https://kit.fontawesome.com/c8e4d183c2.js"
           crossOrigin="anonymous"
         ></script>
+
         <link
           rel="stylesheet"
           href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"
@@ -26,9 +26,7 @@ export default function Homepage() {
       </Head>
 
       <main>
-    
         <Home />
-    
       </main>
     </div>
   );

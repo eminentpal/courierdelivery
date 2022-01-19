@@ -1,4 +1,5 @@
 import React from "react";
+import ShipmentHistory from "./ShipmentHistory";
 
 const Dashboard = () => {
   return (
@@ -18,63 +19,53 @@ const Dashboard = () => {
         </div>
         <div className="dashBody">
           <h2>Dashboard Overview</h2>
-          <div className="overview">
-            <div className="card-1">
-              <div>
-                <span>N0.000</span>
-                <h4>Earnings</h4>
+          <div className="layout-1">
+            <div className="overview">
+              <div className="card-1">
+                <div>
+                  <span>N0.000</span>
+                  <h4>Earnings</h4>
+                </div>
+              </div>
+              <div className="card-2">
+                <div>
+                  <span>2,340</span>
+                  <h4>Shipments</h4>
+                </div>
+              </div>
+              <div className="card-3">
+                <div>
+                  <span>2,203</span>
+                  <h4>Delivered</h4>
+                </div>
+              </div>
+              <div className="card-4">
+                <div>
+                  <span>23,394</span>
+                  <h4>Users</h4>
+                </div>
               </div>
             </div>
-            <div className="card-2">
-              <div>
-                <span>N98,598</span>
-                <h4>Shipments</h4>
+            {/* Quick track */}
+            <div className="quickTrack">
+              <div className="quickBox-1">
+                <h3>
+                  Enter your parcel number to <br /> track your deliveries
+                </h3>
               </div>
-            </div>
-            <div className="card-3">
-              <div>
-                <span>N98,598</span>
-                <h4>Delivered</h4>
-              </div>
-            </div>
-            <div className="card-4">
-              <div>
-                <span>N98,598</span>
-                <h4>Users</h4>
+
+              <div className="quickBox-2">
+                <input placeholder="Enter your track number" />
+                <button>Submit</button>
               </div>
             </div>
           </div>
+          {/* Layout two */}
           {/* Shipment History */}
-          <div className="shipHistory">
-            <h2>Shipment History</h2>
-            <div className="shipHeader">
-              <ul>
-                <li>All</li>
-                <li>Delivered</li>
-                <li>In Progress</li>
-                <li>Pending</li>
-              </ul>
-            </div>
-            <div className="shipBody">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Tracking Number</th>
-                    <th>Customer</th>
-                    <th>Address</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>QD3G7DTA8</td>
-                    <td>Innocent Ezie</td>
-                    <td>JG 66A APATA</td>
-                    <td>Delivered Parcel</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div className="layout-2">
+            <ShipmentHistory />
+            {/* B part of layout two */}
+            <div className="dashChart"></div>
           </div>
         </div>
       </div>
