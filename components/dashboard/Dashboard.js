@@ -1,5 +1,6 @@
 import React from "react";
 import ShipmentHistory from "./ShipmentHistory";
+import ShipmentChart from "./ShipmentChart";
 
 const Dashboard = () => {
   return (
@@ -65,7 +66,9 @@ const Dashboard = () => {
           <div className="layout-2">
             <ShipmentHistory />
             {/* B part of layout two */}
-            <div className="dashChart"></div>
+            <div className="dashChart">
+              <ShipmentChart />
+            </div>
           </div>
         </div>
       </div>
