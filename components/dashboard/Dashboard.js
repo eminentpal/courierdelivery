@@ -6,17 +6,33 @@ const Dashboard = () => {
   return (
     <div>
       <div className="dashboardCont">
-        <div className="dashSidebar">
-          <ul className="dashPages">
-            <li>Dashboard</li>
-            <li>Shipments</li>
-            <li>Track</li>
-            <li>Users</li>
-          </ul>
-          {/* Profile */}
-          <ul className="profilePic">
-            <li>Profile</li>
-          </ul>
+        <div className="dash">
+          <div className="dashSidebar">
+            <div className="dashLogo">
+              <img src="images/logo2.svg" alt="logo" />
+            </div>
+            <div className="dashMenu">
+              <h3>Menu</h3>
+              <ul className="dashPages">
+                <li>Dashboard</li>
+                <li>Shipments</li>
+                <li>Track</li>
+                <li>Users</li>
+              </ul>
+            </div>
+            <div className="dashMenu">
+              <h3>Account</h3>
+              {/* Profile */}
+              <ul className="profilePic">
+                <li>Profile</li>
+              </ul>
+            </div>
+            <div className="dashMenu">
+              <ul className="dashLogout">
+                <li>Logout</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div className="dashBody">
           <h2>Dashboard Overview</h2>
