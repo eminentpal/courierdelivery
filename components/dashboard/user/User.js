@@ -1,19 +1,14 @@
 import React from "react";
-import ShipmentHistory from "./ShipmentHistory";
-import ShipmentChart from "./ShipmentChart";
-import SideBar from "./SideBar";
+import ShipmentHistory from "../ShipmentHistory";
+import ShipmentChart from "../ShipmentChart";
+import SideBar from "../SideBar";
 
-const Dashboard = () => {
+const User = () => {
   return (
     <div>
       <div className="dashboardCont">
         <div className="dash">
-          <SideBar
-            dashboard="Dashboard"
-            track="Track"
-            user="Users"
-            shipments="Shipments"
-          />
+          <SideBar dashboard="Dashboard" track="Track" shipments="Shipments" />
         </div>
         <div className="dashBody">
           <h2>Dashboard Overview</h2>
@@ -22,7 +17,7 @@ const Dashboard = () => {
               <div className="card-1">
                 <div>
                   <span>N0.000</span>
-                  <h4>Earnings</h4>
+                  <h4>Total Spent</h4>
                 </div>
               </div>
               <div className="card-2">
@@ -40,7 +35,7 @@ const Dashboard = () => {
               <div className="card-4">
                 <div>
                   <span>23,394</span>
-                  <h4>Users</h4>
+                  <h4>Pending</h4>
                 </div>
               </div>
             </div>
@@ -73,4 +68,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default User;

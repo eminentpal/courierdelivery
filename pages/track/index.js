@@ -1,5 +1,6 @@
 import TrackDetails from "../../components/track/TrackDetails";
 import uniqid from "uniqid";
+import TrackPage from "../../components/track/TrackPage";
 const trackParcel = () => {
   //   function CallId() {
   //     const id = uniqid.time("DH");
@@ -9,7 +10,7 @@ const trackParcel = () => {
   //   CallId();
   return (
     <div>
-      <TrackDetails />
+      <TrackPage />
     </div>
   );
 };

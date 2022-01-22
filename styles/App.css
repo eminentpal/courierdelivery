@@ -1314,7 +1314,12 @@ td {
 
   width: 170px;
   height: 100vh;
-  background-color: var(--blue);
+  background: rgb(7, 169, 241);
+  background: linear-gradient(
+    90deg,
+    rgba(7, 169, 241, 1) 0%,
+    rgba(92, 93, 155) 93%
+  );
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1341,6 +1346,8 @@ td {
 
 .dashBody h2 {
   margin: 22px 0 15px 0;
+  color: #505050;
+  font-weight: bold;
 }
 
 .dashBody h2:after {
@@ -1353,13 +1360,14 @@ td {
 
 .dashSidebar ul {
   width: 100%;
+
   padding: 10px;
 }
 .dashSidebar ul li {
   font-weight: bold;
   width: 100%;
   color: var(--white);
-  padding: 10px;
+
   cursor: pointer;
   margin-bottom: 10px;
   text-align: left;
@@ -1703,6 +1711,8 @@ td {
   width: 155px;
   text-align: center;
   cursor: pointer;
+  color: #505050;
+  font-weight: bold;
 }
 
 /* .shipHeader ul li:hover {
@@ -1724,6 +1734,8 @@ td {
   width: 600px;
   border: 1px solid #ccc;
   border-collapse: collapse;
+  border-right: 0;
+  border-left: 0;
   margin: 0;
   padding: 0;
 
@@ -1735,17 +1747,106 @@ td {
   max-width: 50px;
   text-align: center;
   padding: 5px 0;
+  color: rgb(129, 123, 123);
+  font-weight: bold;
   overflow: hidden;
   word-wrap: break-word;
+  border-right: 0;
+  border-left: 0;
 }
 
 .shipBody td {
   max-width: 50px;
   text-align: center;
+  color: rgb(129, 123, 123);
   padding: 5px 0;
   overflow: hidden;
   word-wrap: break-word;
+  border-right: 0;
+  border-left: 0;
 }
+/* 
+.shipBody td:last-child {
+  width: 10px !important;
+  padding-left: 0px;
+  text-align: right;
+  color: blue;
+} */
 
 .shipBody tr {
+}
+/* Track page */
+
+.trackpage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #004a4a;
+  background-image: url("https://www.transparenttextures.com/patterns/basketball.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.trackPage-main {
+  width: 500px;
+  height: 315px;
+  /* background: rgb(7, 169, 241);
+  background: linear-gradient(
+    90deg,
+    rgba(7, 169, 241, 1) 0%,
+    rgba(92, 93, 155) 93%
+  ); */
+  border: 1px solid rgb(109, 105, 105);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.trackPage-main button {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 13px 20px;
+
+  outline: none;
+  border: 0;
+  border-radius: 10px;
+  transition: background 0.5es;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.trackPage-main input {
+  width: 100%;
+  max-width: 330px;
+  height: 40px !important;
+  background-color: var(--white);
+  color: rgb(59, 53, 53);
+  letter-spacing: 1px;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 10px 10px;
+  border: 2px solid rgb(223, 220, 220);
+}
+
+.trackPage-1 {
+  width: 450px;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+
+.trackPage-2 {
+  width: 450px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trackPage-2 input::placeholder {
+  color: #d3cece;
+  font-size: 14px;
 }
