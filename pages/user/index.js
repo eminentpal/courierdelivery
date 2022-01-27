@@ -1,11 +1,10 @@
 import React from "react";
-// import User from "../components/dashboard/user/User";
-import User from "../../components/dashboard/user/User";
+import Newuser from "../../components/dashboard/user/User";
 
 const index = () => {
   return (
     <div>
-      <User />
+      <Newuser />
     </div>
   );
 };

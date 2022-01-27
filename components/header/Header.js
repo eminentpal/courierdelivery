@@ -19,7 +19,7 @@ const header = () => {
           <div className="secondNav">
             <ul>
               <li>Track Parcel</li>
-              <li>Request Delivery</li>
+              <li>Sign Up</li>
             </ul>
           </div>
         </nav>
