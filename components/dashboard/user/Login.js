@@ -7,11 +7,11 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { isAuthenticated, error, user, loading } = useSelector(
-    (state) => state.auth
-  );
+  // const { isAuthenticated, error, user, loading } = useSelector(
+  //   (state) => state.auth
+  // );
 
-  console.log(user);
+  // console.log(user);
 
   const router = useRouter();
 
@@ -45,6 +45,15 @@ const Signup = () => {
   };
 
   const clickHandler = () => {};
+
+  // var name = "innocnet";
+  // const sayHello = (name) => {
+  //   // You can print to STDOUT for debugging like you normally would: // but you need to return the value in order to complete the challenge return name; // TODO: return the correct value
+
+  //   console.log(name);
+  // };
+
+  // sayHello(name);
 
   return (
     <div className="signup">

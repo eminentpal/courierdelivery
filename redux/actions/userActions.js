@@ -38,15 +38,19 @@ export const register = (userData) => async (dispatch) => {
 
 //Load User
 
-export const loadUser = (req) => async (dispatch) => {
+export const loadUser = (req, token) => async (dispatch) => {
   //we catch the incoming req from context to get the base url
   const { origin } = absoluteUrl(req);
   try {
     dispatch({ type: constants.LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(`${origin}/api/users/user`);
+    const config = {
+      headers: {
+        cookie: token,
+      },
+    };
+    const { data } = await axios.get(`${origin}/api/users/user`, config);
 
-    console.log(data.user);
     dispatch({
       type: constants.LOAD_USER_SUCCESS,
       payload: data,

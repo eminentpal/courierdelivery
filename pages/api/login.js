@@ -12,9 +12,6 @@ export default async function handler(req, res) {
   const { email, password } = req.body;
 
   console.log(req.body);
-  //   let name = "innocent ezie";
-  //   let email = "ezieinsp0833854490@gmail.com";
-  //   let password = "123456";
 
   try {
     if (!email || !password) {

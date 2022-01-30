@@ -10,9 +10,10 @@ shipConnect();
 const handler = async (req, res) => {
   if (req.method === "GET") {
     console.log("jj");
+
     const cookies = Cookie.fromApiRoute(req, res);
 
-    const token = cookies.get("token");
+    const token = req.headers.cookie;
 
     console.log(token);
     if (!token) {
