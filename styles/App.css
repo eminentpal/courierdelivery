@@ -943,6 +943,53 @@ ul li {
   justify-content: space-between;
 }
 
+.shipFormContainer {
+  width: 1100px;
+  margin: auto;
+  background-color: rgb(242, 248, 250);
+}
+
+.formContent {
+  width: 800px;
+  height: 130px;
+  margin: auto;
+  margin-bottom: 50px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.formContent h2 {
+  margin: 10px;
+
+  color: var(--blue);
+  text-align: center;
+}
+
+.formContent p {
+  font-size: 16px;
+  color: #555;
+}
+
+.formBtn {
+  width: 340px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.formBtn button {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  padding: 10px 20px;
+  outline: none;
+  border: 0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
 .inputBox-1 {
   width: 490px;
   background-color: rgb(242, 248, 250);
@@ -950,6 +997,7 @@ ul li {
   display: flex;
   flex-direction: column;
   padding: 0 50px;
+  margin: auto;
   margin-bottom: 40px;
   margin-top: 40px;
   justify-content: space-evenly;
@@ -957,11 +1005,12 @@ ul li {
 
 .inputBox-2 {
   width: 490px;
-  background-color: rgb(242, 248, 250);
+  background-color: hsl(195, 44%, 96%);
 
   display: flex;
   flex-direction: column;
   padding: 0 50px;
+  margin: auto;
   margin-bottom: 40px;
   margin-top: 40px;
   justify-content: space-evenly;
@@ -973,7 +1022,7 @@ ul li {
   flex-direction: column;
   margin: 0 auto;
   justify-content: space-between;
-  height: 550px;
+  height: 400px;
 }
 
 .inputDiv-2 {
@@ -986,7 +1035,7 @@ ul li {
 
 .form-input {
   width: 100%;
-  height: 50px !important;
+  height: 45px !important;
   background-color: var(--white);
   color: rgb(59, 53, 53);
   letter-spacing: 1px;
@@ -1981,4 +2030,33 @@ td {
   transition: color 0.3s ease;
 
   /* transition: transform 0.3s ease, opacity 0.2s ease; */
+}
+
+.ship-pricing {
+  width: 400px;
+  height: 300px;
+  background-color: skyblue;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  color: grey;
+  margin-bottom: 50px;
+}
+
+.pricing-container {
+  width: 300px;
+
+  margin: auto;
+}
+.pricing-box {
+  font-size: 16px;
+  font-weight: bold;
+  color: grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  border-top: 1px solid grey;
+  margin-top: 20px;
 }

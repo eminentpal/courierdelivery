@@ -6,7 +6,6 @@ const Progress = ({ page, answer }) => {
       {/* <!-- progressbar --> */}
 
       <div>
-        {" "}
         <ul id="progressbar">
           <li class="active" id="account">
             <strong>Confirmed</strong>
