@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ShipmentHistory from "../ShipmentHistory";
 import ShipmentChart from "../ShipmentChart";
 import SideBar from "../SideBar";
+import { useDispatch } from "react-redux";
+import { myShipments } from "../../../redux/actions/shipActions";
+import { useSelector } from "react-redux";
 
 const User = () => {
+  const dispatch = useDispatch();
+
+  const { loading, myshipments } = useSelector((state) => state.myshipments);
+
+  const totalDelivered = myshipments?.filter((order) => {
+    return order.paymentInfo.totalPrice === "Processing";
+  });
+
+  console.log(totalDelivered);
+  useEffect(() => {
+    dispatch(myShipments());
+  }, []);
+
   return (
     <div>
       <div className="dashboardCont">
@@ -22,13 +38,18 @@ const User = () => {
               </div>
               <div className="card-2">
                 <div>
-                  <span>2,340</span>
+                  <span>{myshipments?.length}</span>
                   <h4>Shipments</h4>
                 </div>
               </div>
               <div className="card-3">
                 <div>
-                  <span>2,203</span>
+                  {totalDelivered?.length === 0 ? (
+                    <span>0</span>
+                  ) : (
+                    <span>{totalDelivered}</span>
+                  )}
+
                   <h4>Delivered</h4>
                 </div>
               </div>
@@ -56,7 +77,7 @@ const User = () => {
           {/* Layout two */}
           {/* Shipment History */}
           <div className="layout-2">
-            <ShipmentHistory />
+            <ShipmentHistory shipments={myshipments} />
             {/* B part of layout two */}
             <div className="dashChart">
               <ShipmentChart />

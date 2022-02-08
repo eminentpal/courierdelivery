@@ -4,6 +4,7 @@ import thunkMiddleware from "redux-thunk";
 // import { composeWithDevTools } from "redux-devtools-extension";
 
 import { authReducer } from "./reducers/userReducers";
+import { myShipmentReducer } from "./reducers/shipReducers";
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== "production") {
@@ -17,6 +18,7 @@ const bindMiddleware = (middleware) => {
 
 const reducers = combineReducers({
   auth: authReducer,
+  myshipments: myShipmentReducer,
 });
 
 //hydrate is process of filling container with data

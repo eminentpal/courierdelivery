@@ -2,20 +2,20 @@ import mongoose, { models } from "mongoose";
 
 const shippingsSchema = new mongoose.Schema({
   sender: {
-    name: String,
+    senderName: String,
     senderContact: String,
     senderAddress: String,
-    country: String,
-    city: String,
+    senderCountry: String,
+    senderCity: String,
     zip: String,
   },
 
   receiver: {
-    name: String,
+    receiverName: String,
     receiverContact: String,
     receiverAddress: String,
-    country: String,
-    city: String,
+    receiverCountry: String,
+    receiverCity: String,
     zip: String,
   },
   deliveryInfo: {
@@ -38,12 +38,19 @@ const shippingsSchema = new mongoose.Schema({
 
   productTrack: [
     {
-      country: {
+      date: {
+        type: Date,
+      },
+      location: {
         type: String,
       },
       status: {
+        //use select option to create the status list choice, ege pending,processing, on hold, delivered.
         type: String,
-        default: "pending",
+      },
+      //explain the point u are and if any issue
+      remark: {
+        type: String,
       },
     },
   ],
@@ -79,12 +86,20 @@ const shippingsSchema = new mongoose.Schema({
     orderStatus: {
       type: String,
       required: true,
-      default: "processing",
+      default: "Processing",
     },
   },
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  //you will manually set delivery date from dashboard
+  deliveryDate: {
+    type: String,
+  },
+  //you will manually set shipped date from dashboard
+  shippedAt: {
+    type: String,
   },
 });
 

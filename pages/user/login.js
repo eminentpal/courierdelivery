@@ -45,9 +45,9 @@ export const getServerSideProps = wrapper.getServerSideProps(
             permanent: false,
           },
         };
-      }
 
-      // await store.dispatch(loadUser(req, token));
+        await store.dispatch(loadUser(req, token));
+      }
     }
 );
 

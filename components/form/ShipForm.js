@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { newShipment } from "../../redux/actions/shipActions";
 import { FormOne, FormTwo, FormThree, FormFour } from "./Formpages";
-
+import { useDispatch } from "react-redux";
 const ShipForm = () => {
+  const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [sender, setSender] = useState({
     senderName: "",
@@ -83,8 +85,19 @@ const ShipForm = () => {
   console.log(receiver);
   console.log(totalPrice);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const response = await fetch(`/api/shipments/shipment`, {
+      //we need to add this since its a post req
+      method: "POST",
+      body: JSON.stringify({ receiver, sender, deliveryInfo, totalPrice }),
+      //header to show we sending a json file
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // dispatch(newShipment({ receiver, sender, deliveryInfo, totalPrice }));
   };
   const nextPage = () => {
     switch (page) {
@@ -151,44 +164,42 @@ const ShipForm = () => {
         <hr />
         <br />
       </div>
-      <form>
-        <div>
-          {page === 1 && (
-            <FormOne sender={sender} handleChange={handleChange} />
-          )}
-          {page === 2 && (
-            <FormTwo receiver={receiver} handleReceiver={handleReceiver} />
-          )}
-          {page === 3 && (
-            <FormThree
-              deliveryInfo={deliveryInfo}
-              handleDelivery={handleDeliveryInfo}
-            />
-          )}
-          {page === 4 && (
-            <FormFour
-              totalPrice={totalPrice}
-              weight={deliveryInfo.weight}
-              quantity={deliveryInfo.quantity}
-            />
-          )}
+      {/* <form> */}
+      <div>
+        {page === 1 && <FormOne sender={sender} handleChange={handleChange} />}
+        {page === 2 && (
+          <FormTwo receiver={receiver} handleReceiver={handleReceiver} />
+        )}
+        {page === 3 && (
+          <FormThree
+            deliveryInfo={deliveryInfo}
+            handleDelivery={handleDeliveryInfo}
+          />
+        )}
+        {page === 4 && (
+          <FormFour
+            totalPrice={totalPrice}
+            weight={deliveryInfo.weight}
+            quantity={deliveryInfo.quantity}
+          />
+        )}
 
-          <div className="formBtn">
-            <button
-              style={{ visibility: page === 1 && "hidden" }}
-              onClick={prevPage}
-            >
-              Back
-            </button>
+        <div className="formBtn">
+          <button
+            style={{ visibility: page === 1 && "hidden" }}
+            onClick={prevPage}
+          >
+            Back
+          </button>
 
-            {page === 4 ? (
-              <button onClick={handleSubmit}>Finish</button>
-            ) : (
-              <button onClick={nextPage}>Next</button>
-            )}
-          </div>
+          {page === 4 ? (
+            <button onClick={handleSubmit}>Finish</button>
+          ) : (
+            <button onClick={nextPage}>Next</button>
+          )}
         </div>
-      </form>
+      </div>
+      {/* </form> */}
     </div>
   );
 };

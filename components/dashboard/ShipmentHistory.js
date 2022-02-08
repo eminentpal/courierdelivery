@@ -20,24 +20,26 @@ const customers = [
     status: "Pending",
   },
 ];
-const ShipmentHistory = () => {
-  const lists = ["All", "Delivered", "In Progress", "Pending"];
+const ShipmentHistory = ({ shipments }) => {
+  const lists = ["All", "Delivered", "In Progress", "Processing"];
   const [toggle, setToggle] = useState(0);
 
-  const [data, setData] = useState(customers);
+  const [data, setData] = useState(shipments);
 
   const handleClick = (list, index) => {
     setToggle(index);
 
     if (list === "All") {
-      setData(customers);
+      setData(shipments);
     } else {
-      const avail = customers.filter((track) => {
-        return track.status === list;
+      const avail = shipments.filter((track) => {
+        return track.paymentInfo.orderStatus === list;
       });
       setData(avail);
     }
   };
+
+  console.log(data);
 
   return (
     <div>
@@ -68,11 +70,11 @@ const ShipmentHistory = () => {
             </thead>
             <tbody>
               {data.map((item) => (
-                <tr key={item.trackNumber}>
-                  <td>{item.trackNumber}</td>
-                  <td>{item.name}</td>
-                  <td>{item.address}</td>
-                  <td>{item.status}</td>
+                <tr>
+                  <td>GH746474</td>
+                  <td>{item.receiver.receiverName}</td>
+                  <td>{item.receiver.receiverAddress}</td>
+                  <td>{item.paymentInfo.orderStatus}</td>
                 </tr>
               ))}
             </tbody>
