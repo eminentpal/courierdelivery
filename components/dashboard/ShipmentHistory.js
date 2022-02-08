@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useEffect } from "react";
 
 const customers = [
   {
@@ -20,10 +21,11 @@ const customers = [
     status: "Pending",
   },
 ];
-const ShipmentHistory = ({ shipments }) => {
+const ShipmentHistory = ({ shipments, loading }) => {
   const lists = ["All", "Delivered", "In Progress", "Processing"];
   const [toggle, setToggle] = useState(0);
 
+  console.log(shipments);
   const [data, setData] = useState(shipments);
 
   const handleClick = (list, index) => {
@@ -32,7 +34,7 @@ const ShipmentHistory = ({ shipments }) => {
     if (list === "All") {
       setData(shipments);
     } else {
-      const avail = shipments.filter((track) => {
+      const avail = shipments?.filter((track) => {
         return track.paymentInfo.orderStatus === list;
       });
       setData(avail);
@@ -59,26 +61,30 @@ const ShipmentHistory = ({ shipments }) => {
           </ul>
         </div>
         <div className="shipBody">
-          <table>
-            <thead>
-              <tr>
-                <th>Tracking Number</th>
-                <th>Customer</th>
-                <th>Address</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item) => (
+          {loading ? (
+            <div>loading</div>
+          ) : (
+            <table>
+              <thead>
                 <tr>
-                  <td>GH746474</td>
-                  <td>{item.receiver.receiverName}</td>
-                  <td>{item.receiver.receiverAddress}</td>
-                  <td>{item.paymentInfo.orderStatus}</td>
+                  <th>Tracking Number</th>
+                  <th>Customer</th>
+                  <th>Address</th>
+                  <th>Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {data?.map((item) => (
+                  <tr key={item._d}>
+                    <td>{item.trackId}</td>
+                    <td>{item.receiver.receiverName}</td>
+                    <td>{item.receiver.receiverAddress}</td>
+                    <td>{item.paymentInfo.orderStatus}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </div>

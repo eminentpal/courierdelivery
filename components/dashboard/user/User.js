@@ -77,7 +77,7 @@ const User = () => {
           {/* Layout two */}
           {/* Shipment History */}
           <div className="layout-2">
-            <ShipmentHistory shipments={myshipments} />
+            <ShipmentHistory shipments={myshipments} loading={loading} />
             {/* B part of layout two */}
             <div className="dashChart">
               <ShipmentChart />

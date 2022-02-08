@@ -2,6 +2,7 @@ import shipConnect from "../../../database/shipConnect";
 import Shipping from "../../../models/Shipping";
 import User from "../../../models/User";
 import jwt from "jsonwebtoken";
+import shortid from "shortid";
 
 shipConnect();
 
@@ -20,16 +21,21 @@ const handler = async (req, res) => {
     paidAt: Date.now(),
   };
 
+  //we create a short id
+  const track = shortid.generate();
+
+  console.log(track);
   const data = await Shipping.create({
     receiver,
     sender,
     deliveryInfo,
+    trackId: `PD${track}`,
     totalPrice,
     paymentInfo,
     user: userLogin._id,
   });
 
-  console.log(data);
+  //   console.log(data);
   res.status(201).json({ success: true, data });
 };
 
