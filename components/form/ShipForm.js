@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 const ShipForm = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
+  const [formErrors, setFormErrors] = useState({});
+  const [check, setCheck] = useState(false);
   const [sender, setSender] = useState({
     senderName: "",
     senderContact: "",
@@ -13,6 +15,7 @@ const ShipForm = () => {
     senderCity: "",
   });
 
+  console.log(formErrors);
   const [receiver, setReceiver] = useState({
     receiverName: "",
     receiverContact: "",
@@ -29,6 +32,17 @@ const ShipForm = () => {
     weight: "",
     quantity: "",
   });
+
+  //form validate
+
+  const formValidate = (values) => {
+    const errors = {};
+
+    if (!values.senderName) {
+      errors.senderName = "fullName is required!";
+    }
+    return errors;
+  };
 
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -99,10 +113,26 @@ const ShipForm = () => {
     });
     // dispatch(newShipment({ receiver, sender, deliveryInfo, totalPrice }));
   };
+
+  const errorCheck = () => {
+    setFormErrors(formValidate(sender));
+    if (Object.values(sender).length !== 6) {
+      return true;
+    }
+  };
   const nextPage = () => {
     switch (page) {
       case 1:
+        setFormErrors(formValidate(sender));
+        setCheck(true);
+        if (!check) {
+          return;
+        } else if (Object.keys(formErrors).length !== 0) {
+          return setCheck(true);
+        }
+
         setPage((prev) => prev + 1);
+
         break;
       case 2:
         setPage((prev) => prev + 1);
@@ -166,7 +196,15 @@ const ShipForm = () => {
       </div>
       {/* <form> */}
       <div>
-        {page === 1 && <FormOne sender={sender} handleChange={handleChange} />}
+        {page === 1 && (
+          <FormOne
+            sender={sender}
+            formValidate={formValidate}
+            handleChange={handleChange}
+            setFormErrors={setFormErrors}
+            errorCheck={errorCheck}
+          />
+        )}
         {page === 2 && (
           <FormTwo receiver={receiver} handleReceiver={handleReceiver} />
         )}

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-export const FormOne = ({ sender, handleChange }) => {
+export const FormOne = ({
+  sender,
+  setFormErrors,
+  formValidate,
+  handleChange,
+}) => {
   return (
     <div>
       <form>
@@ -9,6 +14,7 @@ export const FormOne = ({ sender, handleChange }) => {
           <div className="inputDiv-1">
             <h2>Pick-Up Address</h2>
             <input
+              onKeyPress={() => setFormErrors(formValidate(sender))}
               type="text"
               className="form-input"
               placeholder="NAME*"

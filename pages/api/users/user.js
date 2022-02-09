@@ -13,9 +13,10 @@ const handler = async (req, res) => {
 
     const cookies = Cookie.fromApiRoute(req, res);
 
+    console.log({ cook: cookies });
     const token = req.headers.cookie;
 
-    console.log(token);
+    // console.log(token);
     if (!token) {
       return res
         .status(401)
