@@ -1,17 +1,19 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import protectedRoutes from "../../proctectroutes/protectedRoutes";
+import protectedRoutes from "../../middlewares/protectedRoutes";
 import { Cookie } from "next-cookie";
 
 import cookie from "js-cookie";
 import jwt from "jsonwebtoken";
-import { isAuthenticated } from "../../proctectroutes/auth";
+import isAuthenticated from "../../middlewares/auth";
 import nc from "next-connect";
-import Hello from "../../proctectroutes/hello";
+import Hello from "../../middlewares/hello";
+import shipConnect from "../../database/shipConnect";
 
 const handler = nc();
 
-handler.get(Hello);
+shipConnect();
+handler.use(isAuthenticated).get(Hello);
 
 export default handler;
 

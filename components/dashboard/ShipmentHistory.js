@@ -25,7 +25,7 @@ const ShipmentHistory = ({ shipments, loading }) => {
   const lists = ["All", "Delivered", "In Progress", "Processing"];
   const [toggle, setToggle] = useState(0);
 
-  console.log(shipments);
+  // console.log(shipments);
   const [data, setData] = useState(shipments);
 
   const handleClick = (list, index) => {

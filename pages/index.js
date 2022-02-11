@@ -1,6 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import { wrapper } from "../redux/store";
+import { loadUser } from "../redux/actions/userActions";
+import { Cookie } from "next-cookie";
 import Home from "../components/home/Home";
 
 export default function Homepage() {
@@ -31,3 +34,22 @@ export default function Homepage() {
     </div>
   );
 }
+
+//use this serverside method when u are  bothered abt server side rednering of ur data through redux store.
+// we want to load user details want de land on home page
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({ req }) => {
+      const cookies = Cookie.fromApiRoute(req);
+
+      const token = cookies.get("token");
+      // const sess = await getSession({ req });
+
+      // console.log(token);
+
+      if (token) {
+        await store.dispatch(loadUser(req, token));
+        console.log("Theres token");
+      }
+    }
+);

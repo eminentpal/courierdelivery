@@ -24,31 +24,31 @@ const login = () => {
 
 export default login;
 
+//use this serverside method when u are  bothered abt server side rednering of ur data through redux store.
 // export const getServerSideProps = wrapper.getServerSideProps(
 //   async ({ req, store }) => {
 //     await store.dispatch(loadUser(req));
 //   }
 // );
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ req }) => {
-      const cookies = Cookie.fromApiRoute(req);
+//use this serverside method when u are not bothered abt server side rednering of ur data through redux store.
 
-      const token = cookies.get("token");
-      // const sess = await getSession({ req });
+export function getServerSideProps(context) {
+  // const sess = await getSession({ req });
 
-      if (token) {
-        return {
-          redirect: {
-            destination: "/",
-            permanent: false,
-          },
-        };
+  const token = context.req.headers.cookie;
 
-        await store.dispatch(loadUser(req, token));
-      }
-    }
-);
+  if (token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 login.getLayout = (page) => <>{page}</>;

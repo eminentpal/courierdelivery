@@ -32,6 +32,7 @@ const Signup = () => {
     // if (res.message || res.error) {
     //   console.log(res.message);
     // } else {
+
     //   const options = {
     //     expiresIn: process.env.JWT_EXPIRES_TIME,
     //     httpOnly: true,

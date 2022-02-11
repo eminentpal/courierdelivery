@@ -2,8 +2,6 @@ import React from "react";
 import Newuser from "../../components/dashboard/user/User";
 import { wrapper } from "../../redux/store";
 import { loadUser } from "../../redux/actions/UserActions";
-// import { getSession } from "next-auth/react";
-import { getSession } from "next-auth/client";
 
 import { Cookie } from "next-cookie";
 
@@ -16,15 +14,15 @@ const index = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
+  (store, context) =>
     async ({ req }) => {
       const cookies = Cookie.fromApiRoute(req);
 
+      console.log({ token: cookies.cookies });
       const token = cookies.get("token");
-      const sess = await getSession({ req });
 
-      console.log({ ok: token });
-      console.log(sess);
+      console.log(token);
+
       if (!token) {
         return {
           redirect: {
@@ -32,8 +30,9 @@ export const getServerSideProps = wrapper.getServerSideProps(
             permanent: false,
           },
         };
+      } else {
+        await store.dispatch(loadUser(req, token));
       }
-      await store.dispatch(loadUser(req, token));
     }
 );
 export default index;

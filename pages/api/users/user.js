@@ -1,37 +1,11 @@
-import { Cookie } from "next-cookie";
-import shipConnect from "../../../database/shipConnect";
+import isAuthenticated from "../../../middlewares/auth";
 import nc from "next-connect";
-import User from "../../../models/user";
-import jwt from "jsonwebtoken";
+import { getUser } from "../../../controllers/userController";
+import shipConnect from "../../../database/shipConnect";
 
-//this api is for user info.
+const handler = nc();
+
 shipConnect();
-
-const handler = async (req, res) => {
-  if (req.method === "GET") {
-    console.log("jj");
-
-    const cookies = Cookie.fromApiRoute(req, res);
-
-    console.log({ cook: cookies });
-    const token = req.headers.cookie;
-
-    // console.log(token);
-    if (!token) {
-      return res
-        .status(401)
-        .json({ message: "Login first to access this resource." });
-    } else {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-      console.log(decoded);
-
-      //remember we stored d user id on the payload so we use it to find d user
-      const user = await User.findById(decoded.id);
-      console.log(user);
-      res.status(200).json(user);
-    }
-  }
-};
+handler.use(isAuthenticated).get(getUser);
 
 export default handler;

@@ -5,29 +5,32 @@ import jwt from "jsonwebtoken";
 import { Cookie } from "next-cookie";
 import shortid from "shortid";
 
-shipConnect();
+// shipConnect();
 
 export const userShipments = async (req, res) => {
   console.log("user orders");
   //  get logged in user shipment orders
+  // console.log(req.user);
+  // const cookies = Cookie.fromApiRoute(req, res);
+  // const token = cookies.get("token");
+  // // console.log(token);
+  // //   const token =
+  // //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDI1OTcwNjMwYTAyNzNmMDBiYTIzZiIsImlhdCI6MTY0NDMyMTEzOCwiZXhwIjoxNjQ0OTI1OTM4fQ.HhqqezikPSVnGbmmJxrWH75vpeWW1hMEk5mfBlqfmIo";
+  // const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-  const cookies = Cookie.fromApiRoute(req, res);
-  const token = cookies.get("token");
-  console.log(token);
-  //   const token =
-  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDI1OTcwNjMwYTAyNzNmMDBiYTIzZiIsImlhdCI6MTY0NDMyMTEzOCwiZXhwIjoxNjQ0OTI1OTM4fQ.HhqqezikPSVnGbmmJxrWH75vpeWW1hMEk5mfBlqfmIo";
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  const userLogin = await User.findById(decoded.id);
-  if (!userLogin) {
+  //check the middleware auth, I pattached the user details to the approved req i.e the user.req//
+  const oldUser = await User.findById(req.user);
+
+  if (!oldUser) {
     return res.status(401).json({ message: "No User with that ID" });
   }
-  console.log(userLogin);
+  // console.log(userLogin);
 
   const data = await Shipping.find({
-    user: userLogin._id,
+    user: oldUser._id,
   });
 
-  console.log(data);
+  // console.log(data);
   res.status(201).json({ success: true, data });
 };
 
