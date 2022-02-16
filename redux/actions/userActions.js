@@ -4,9 +4,7 @@ import axios from "axios";
 
 //REGISTER USER
 
-export const register = (userData) => async (dispatch) => {
-  console.log("hitt");
-
+export const registerUser = (userData) => async (dispatch) => {
   dispatch({ type: constants.REGISTER_USER_REQUEST });
 
   const response = await fetch(`/api/register/`, {
@@ -36,9 +34,40 @@ export const register = (userData) => async (dispatch) => {
   }
 };
 
+//Login Userrr
+
+export const loginUser = (email, password) => async (dispatch) => {
+  try {
+    dispatch({ type: constants.LOGIN_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.post(
+      "/api/login",
+      { email, password },
+      config
+    );
+
+    dispatch({
+      type: constants.LOGIN_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: constants.LOGIN_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
 //Load User
 
-export const loadUser = (req, token) => async (dispatch) => {
+export const LoadUser = (req, token) => async (dispatch) => {
   //we catch the incoming req from context to get the base url
   const { origin } = absoluteUrl(req);
   try {

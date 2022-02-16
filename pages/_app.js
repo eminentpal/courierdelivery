@@ -4,12 +4,12 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import Head from "next/head";
 
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 import { wrapper } from "../redux/store";
-import { loadUser } from "../redux/actions/UserActions";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Router, useRouter } from "next/router";
+
+// import { useEffect } from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import { Router, useRouter } from "next/router";
 
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
@@ -21,9 +21,6 @@ const options = {
 };
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
-  const dispatch = useDispatch();
   //I load user when the component mount
   //i added the router as a dependency to keep track of the user state
 

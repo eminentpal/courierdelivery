@@ -12,6 +12,7 @@ const sendToken = (user, statusCode, res) => {
     ),
     //this is to  ensure its not easy to access isong javascript code by hackers
     httpOnly: true,
+    path: "/",
   };
 
   console.log(token);
@@ -24,7 +25,6 @@ const sendToken = (user, statusCode, res) => {
     })
   );
 
-  console.log(token);
   res.status(statusCode).json({
     success: true,
     token,

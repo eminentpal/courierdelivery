@@ -15,7 +15,7 @@ const User = () => {
     return order.paymentInfo.totalPrice === "Processing";
   });
 
-  console.log(totalDelivered);
+  // console.log(totalDelivered);
   useEffect(() => {
     dispatch(myShipments());
   }, []);

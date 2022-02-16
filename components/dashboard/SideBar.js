@@ -1,16 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "../../redux/actions/UserActions";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 const SideBar = (props) => {
   const dispatch = useDispatch();
-
+  const router = useRouter();
   const { user, loading, error } = useSelector((state) => state.auth);
 
   console.log(user);
   const logoutHandler = () => {
     dispatch(Logout());
-    alert("Logged out successfully.");
+    toast("Success");
+    router.push("/");
   };
 
   if (loading) {
@@ -122,7 +125,7 @@ c-245 3 -253 3 -253 -16z m407 -52 c49 -29 67 -73 67 -160 0 -120 -36 -174
         <h3>Account</h3>
         {/* Profile */}
         <ul className="profilePic">
-          <li>{user && user.name}</li>
+          <li>{user && user.name} </li>
         </ul>
       </div>
       <div className="dashMenu">

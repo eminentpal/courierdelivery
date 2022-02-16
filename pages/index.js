@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { wrapper } from "../redux/store";
-import { loadUser } from "../redux/actions/userActions";
+import { LoadUser } from "../redux/actions/userActions";
 import { Cookie } from "next-cookie";
 import Home from "../components/home/Home";
 
@@ -48,7 +48,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       // console.log(token);
 
       if (token) {
-        await store.dispatch(loadUser(req, token));
+        await store.dispatch(LoadUser(req, token));
         console.log("Theres token");
       }
     }

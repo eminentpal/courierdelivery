@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import cookie from "js-cookie";
+
+import { loginUser, clearErrors } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-const Signup = () => {
+
+const UserLogin = () => {
   const [toggle, setToggle] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
-  // const { isAuthenticated, error, user, loading } = useSelector(
-  //   (state) => state.auth
-  // );
+  const { isAuthenticated, error } = useSelector((state) => state.auth);
 
   // console.log(user);
 
@@ -17,44 +18,33 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`/api/login/`, {
-      //we need to add this since its a post req
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      //header to show we sending a json file
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
 
-    const res = await response.json();
-    console.log(res);
-    // if (res.message || res.error) {
-    //   console.log(res.message);
-    // } else {
+    dispatch(loginUser(email, password));
+    // const response = await fetch(`/api/login/`, {
+    //   //we need to add this since its a post req
+    //   method: "POST",
+    //   body: JSON.stringify({ email, password }),
+    //   //header to show we sending a json file
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
 
-    //   const options = {
-    //     expiresIn: process.env.JWT_EXPIRES_TIME,
-    //     httpOnly: true,
-    //   };
-
-    //   cookie.set("token", res.token);
-    //   const r = cookie.get("token");
-    //   console.log(r);
-    //   console.log("sent");
-    // }
+    // const res = await response.json();
+    // console.log(res);
   };
 
-  const clickHandler = () => {};
-
-  // var name = "innocnet";
-  // const sayHello = (name) => {
-  //   // You can print to STDOUT for debugging like you normally would: // but you need to return the value in order to complete the challenge return name; // TODO: return the correct value
-
-  //   console.log(name);
-  // };
-
-  // sayHello(name);
+  useEffect(() => {
+    //if user is already logged
+    if (isAuthenticated) {
+      router.push("/user");
+    }
+    if (error) {
+      alert(error);
+      console.log(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, isAuthenticated, , error]);
 
   return (
     <div className="signup">
@@ -101,8 +91,8 @@ const Signup = () => {
           </form>
 
           <>
-            <span>Already have account?</span>{" "}
-            <span onClick={() => router.push("/user/signup")}>Sign In now</span>
+            <span>Don't have account?</span>
+            <span onClick={() => router.push("/user/signup")}>Sign Up now</span>
           </>
         </div>
       </div>
@@ -110,4 +100,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default UserLogin;

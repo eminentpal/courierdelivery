@@ -4,6 +4,7 @@ export const authReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case constants.REGISTER_USER_REQUEST:
     case constants.LOAD_USER_REQUEST:
+    case constants.LOGIN_REQUEST:
       return {
         loading: true,
         isAuthenticated: false,
@@ -11,6 +12,7 @@ export const authReducer = (state = { user: {} }, action) => {
 
     case constants.REGISTER_USER_SUCCESS:
     case constants.LOAD_USER_SUCCESS:
+    case constants.LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -39,7 +41,7 @@ export const authReducer = (state = { user: {} }, action) => {
         error: action.payload,
       };
 
-    // case LOGIN_FAIL:
+    case constants.LOGIN_FAIL:
     case constants.REGISTER_USER_FAIL:
       return {
         ...state,

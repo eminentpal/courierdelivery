@@ -1,9 +1,31 @@
-import React from "react";
-import ShipmentHistory from "./ShipmentHistory";
-import ShipmentChart from "./ShipmentChart";
-import SideBar from "./SideBar";
+import React, { useEffect } from "react";
+import ShipmentHistory from "../ShipmentHistory";
+import ShipmentChart from "../ShipmentChart";
+import SideBar from "../SideBar";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { myShipments } from "../../../redux/actions/shipActions";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { loading, myshipments } = useSelector((state) => state.myshipments);
+  const { user } = useSelector((state) => state.auth);
+
+  const totalDelivered = myshipments?.filter((order) => {
+    return order.paymentInfo.totalPrice === "Processing";
+  });
+
+  // console.log(totalDelivered);
+  useEffect(() => {
+    if (user.role !== "admin") {
+      router.push("/");
+    }
+    dispatch(myShipments());
+  }, [user]);
+
+ 
   return (
     <div>
       <div className="dashboardCont">
@@ -61,7 +83,7 @@ const Dashboard = () => {
           {/* Layout two */}
           {/* Shipment History */}
           <div className="layout-2">
-            <ShipmentHistory />
+            <ShipmentHistory shipments={myshipments} loading={loading} />
             {/* B part of layout two */}
             <div className="dashChart">
               <ShipmentChart />

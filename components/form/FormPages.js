@@ -1,11 +1,35 @@
 import React, { useState } from "react";
 
-export const FormOne = ({
-  sender,
-  setFormErrors,
-  formValidate,
-  handleChange,
-}) => {
+export const FormOne = ({ sender, setFormErrors, setCheck, handleChange }) => {
+  const formValidate = (values) => {
+    const errors = {};
+
+    if (!values.senderName) {
+      errors.senderName = "fullName is required!";
+    }
+    if (!values.senderContact) {
+      errors.senderContact = "Sender Contact is required!";
+    }
+    if (!values.senderAddress) {
+      errors.senderAddress = "Sender Address is required!";
+    }
+    if (!values.senderCountry) {
+      errors.senderCountry = "Sender Country is required!";
+    }
+    if (!values.senderCity) {
+      errors.senderCity = "Sender City is required!";
+    }
+    setCheck({
+      receiver: false,
+      sender: true,
+    });
+
+    // if (receiver && !values.receiverName) {
+    //   errors.receiverName = "Receiver name is required!";
+    //   setCheck(true);
+    // }
+    return errors;
+  };
   return (
     <div>
       <form>
@@ -14,7 +38,7 @@ export const FormOne = ({
           <div className="inputDiv-1">
             <h2>Pick-Up Address</h2>
             <input
-              onKeyPress={() => setFormErrors(formValidate(sender))}
+              onKeyUp={() => setFormErrors(formValidate(sender))}
               type="text"
               className="form-input"
               placeholder="NAME*"
@@ -31,6 +55,7 @@ export const FormOne = ({
               name="senderContact"
               value={sender.senderContact}
               onChange={handleChange}
+              onKeyUp={() => setFormErrors(formValidate(sender))}
               required
             />
 
@@ -41,6 +66,7 @@ export const FormOne = ({
               name="senderAddress"
               value={sender.senderAddress}
               onChange={handleChange}
+              onKeyUp={() => setFormErrors(formValidate(sender))}
               required
             />
             <label name="country">Country</label>
@@ -51,6 +77,7 @@ export const FormOne = ({
               name="senderCountry"
               value={sender.senderCountry}
               onChange={handleChange}
+              onKeyUp={() => setFormErrors(formValidate(sender))}
               required
             />
             <label name="country">City</label>
@@ -60,6 +87,7 @@ export const FormOne = ({
               placeholder="CITY*"
               name="senderCity"
               value={sender.senderCity}
+              onKeyUp={() => setFormErrors(formValidate(sender))}
               onChange={handleChange}
               required
             />
@@ -70,7 +98,45 @@ export const FormOne = ({
   );
 };
 
-export function FormTwo({ receiver, handleReceiver }) {
+export function FormTwo({ receiver, handleReceiver, setCheck, setFormErrors }) {
+  const validateReceiver = (values) => {
+    const errors = {};
+
+    if (!values.receiverName) {
+      errors.receiverName = "fullName is required!";
+    }
+    if (!values.receiverContact) {
+      errors.receiverContact = "Contact is required!";
+    }
+    // if (!values.senderContact) {
+    //   errors.senderContact = "Sender Contact is required!";
+    //   setCheck(true);
+    // }
+    // if (!values.senderAddress) {
+    //   errors.senderAddress = "Sender Address is required!";
+    //   setCheck(true);
+    // }
+    // if (!values.senderCountry) {
+    //   errors.senderCountry = "Sender Country is required!";
+    //   setCheck(true);
+    // }
+    // if (!values.senderCity) {
+    //   errors.senderCity = "Sender City is required!";
+    //   setCheck(true);
+    // }
+
+    // if (receiver && !values.receiverName) {
+    //   errors.receiverName = "Receiver name is required!";
+    //   setCheck(true);
+    // }
+    setCheck({
+      receiver: true,
+      sender: true,
+    });
+    console.log(errors);
+    return errors;
+  };
+
   return (
     <div className="inputBox-1">
       <span>02</span>
@@ -84,6 +150,7 @@ export function FormTwo({ receiver, handleReceiver }) {
           name="receiverName"
           value={receiver.receiverName}
           onChange={handleReceiver}
+          onKeyUp={() => setFormErrors(validateReceiver(receiver))}
           required
         />
 
@@ -95,6 +162,7 @@ export function FormTwo({ receiver, handleReceiver }) {
           name="receiverContact"
           value={receiver.receiverContact}
           onChange={handleReceiver}
+          onKeyUp={() => setFormErrors(validateReceiver(receiver))}
           required
         />
 
@@ -105,6 +173,7 @@ export function FormTwo({ receiver, handleReceiver }) {
           placeholder="DESTINATION ADDRESS*"
           name="receiverAddress"
           value={receiver.receiverAddress}
+          // onKeyUp={() => setFormErrors(formValidate(receiver))}
           onChange={handleReceiver}
           required
         />
@@ -116,6 +185,7 @@ export function FormTwo({ receiver, handleReceiver }) {
           placeholder="COUNTRY*"
           name="receiverCountry"
           value={receiver.receiverCountry}
+          // onKeyUp={() => setFormErrors(formValidate(receiver))}
           onChange={handleReceiver}
           required
         />
@@ -127,6 +197,7 @@ export function FormTwo({ receiver, handleReceiver }) {
           placeholder="CITY*"
           name="receiverCity"
           value={receiver.receiverCity}
+          // onKeyUp={() => setFormErrors(formValidate(receiver))}
           onChange={handleReceiver}
           required
         />

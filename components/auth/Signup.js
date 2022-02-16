@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Router, useRouter } from "next/router";
-import { register, clearErrors } from "../../../redux/actions/UserActions";
+import { useRouter } from "next/router";
+import { registerUser, clearErrors } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 
@@ -21,9 +21,9 @@ const Signup = () => {
     (state) => state.auth
   );
 
-  console.log(user);
+  // console.log(user);
 
-  console.log(isAuthenticated);
+  // console.log(isAuthenticated);
 
   useEffect(() => {
     //if user is already logged
@@ -40,7 +40,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    dispatch(register({ name, email, password, confirmPassword, phoneNo }));
+    dispatch(registerUser({ name, email, password, confirmPassword, phoneNo }));
     // const response = await fetch(`/api/register/`, {
     //   //we need to add this since its a post req
     //   method: "POST",

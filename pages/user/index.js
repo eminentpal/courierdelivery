@@ -1,7 +1,7 @@
 import React from "react";
 import Newuser from "../../components/dashboard/user/User";
 import { wrapper } from "../../redux/store";
-import { loadUser } from "../../redux/actions/UserActions";
+import { LoadUser } from "../../redux/actions/UserActions";
 
 import { Cookie } from "next-cookie";
 
@@ -31,7 +31,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
           },
         };
       } else {
-        await store.dispatch(loadUser(req, token));
+        await store.dispatch(LoadUser(req, token));
       }
     }
 );

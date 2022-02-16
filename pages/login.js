@@ -1,8 +1,8 @@
 import React from "react";
-import Login from "../../components/dashboard/user/Login";
+import UserLogin from "../components/auth/UserLogin";
 import { useSelector } from "react-redux";
-import { wrapper } from "../../redux/store";
-import { loadUser } from "../../redux/actions/UserActions";
+import { wrapper } from "../redux/store";
+
 // import { getSession } from "next-auth/client";
 
 import { Cookie } from "next-cookie";
@@ -17,7 +17,7 @@ const login = () => {
   // if (!user) return <h1>loadijg...</h1>;
   return (
     <div>
-      <Login />
+      <UserLogin />
     </div>
   );
 };

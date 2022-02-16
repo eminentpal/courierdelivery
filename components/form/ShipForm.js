@@ -6,7 +6,11 @@ const ShipForm = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [formErrors, setFormErrors] = useState({});
-  const [check, setCheck] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [check, setCheck] = useState({
+    sender: false,
+    receiver: false,
+  });
   const [sender, setSender] = useState({
     senderName: "",
     senderContact: "",
@@ -32,17 +36,6 @@ const ShipForm = () => {
     weight: "",
     quantity: "",
   });
-
-  //form validate
-
-  const formValidate = (values) => {
-    const errors = {};
-
-    if (!values.senderName) {
-      errors.senderName = "fullName is required!";
-    }
-    return errors;
-  };
 
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -114,32 +107,42 @@ const ShipForm = () => {
     // dispatch(newShipment({ receiver, sender, deliveryInfo, totalPrice }));
   };
 
-  const errorCheck = () => {
-    setFormErrors(formValidate(sender));
-    if (Object.values(sender).length !== 6) {
-      return true;
-    }
-  };
+  console.log(errors);
   const nextPage = () => {
     switch (page) {
       case 1:
-        setFormErrors(formValidate(sender));
-        setCheck(true);
-        if (!check) {
+        // setFormErrors(formValidate(sender));
+
+        if (!check.sender) {
           return;
         } else if (Object.keys(formErrors).length !== 0) {
-          return setCheck(true);
+          return;
         }
 
         setPage((prev) => prev + 1);
 
         break;
+
       case 2:
+        if (!check.receiver) {
+          return setErrors(formErrors);
+        } else if (Object.keys(formErrors).length !== 0) {
+          return setErrors(formErrors);
+        }
+        setErrors({});
         setPage((prev) => prev + 1);
+
         break;
+
       case 3:
+        // if (!check) {
+        //   return;
+        // } else if (Object.keys(formErrors).length !== 0) {
+        //   return;
+        // }
         setPage((prev) => prev + 1);
         shippingCost();
+
         break;
       // case 4:
       //   break;
@@ -152,6 +155,7 @@ const ShipForm = () => {
     switch (page) {
       case 2:
         setPage((prev) => prev - 1);
+        // setCheck(false);
         break;
       case 3:
         setPage((prev) => prev - 1);
@@ -199,23 +203,29 @@ const ShipForm = () => {
         {page === 1 && (
           <FormOne
             sender={sender}
-            formValidate={formValidate}
             handleChange={handleChange}
             setFormErrors={setFormErrors}
-            errorCheck={errorCheck}
+            setCheck={setCheck}
           />
         )}
         {page === 2 && (
-          <FormTwo receiver={receiver} handleReceiver={handleReceiver} />
+          <FormTwo
+            receiver={receiver}
+            handleReceiver={handleReceiver}
+            setFormErrors={setFormErrors}
+            setCheck={setCheck}
+          />
         )}
         {page === 3 && (
           <FormThree
             deliveryInfo={deliveryInfo}
             handleDelivery={handleDeliveryInfo}
+            setFormErrors={setFormErrors}
           />
         )}
         {page === 4 && (
           <FormFour
+            setFormErrors={setFormErrors}
             totalPrice={totalPrice}
             weight={deliveryInfo.weight}
             quantity={deliveryInfo.quantity}
