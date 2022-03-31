@@ -44,6 +44,13 @@ export const getServerSideProps = wrapper.getServerSideProps(
             permanent: false,
           },
         };
+      }
+
+      if (token) {
+        // const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        // console.log(decoded);
+        // //remember we stored d user id on token wen we created it so we use it to find d user
+        // req.user = await User.findById(decoded.id);
       } else {
         await store.dispatch(LoadUser(req, token));
       }
