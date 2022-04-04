@@ -95,11 +95,11 @@ const shippingsSchema = new mongoose.Schema({
   },
   //you will manually set delivery date from dashboard
   deliveryDate: {
-    type: String,
+    type: Date,
   },
   //you will manually set shipped date from dashboard
   shippedAt: {
-    type: String,
+    type: Date,
   },
 });
 

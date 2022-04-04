@@ -14,6 +14,11 @@ const TrackDetails = () => {
         {/* shipment details */}
 
         {/* Table */}
+        <div>
+          <h4>
+            Delivery Status: <span>Delivered</span>
+          </h4>
+        </div>
         <div className="tableBox">
           <table>
             <caption>Shipment Details</caption>
@@ -54,20 +59,24 @@ const TrackDetails = () => {
               </tr>
 
               <tr>
-                <td data-label="Weight:">
-                  Jentafadwmu street 46 road to 30minures of terminus jos
-                  Nigeria country
-                </td>
+                <td data-label="Weight:">6kg</td>
               </tr>
 
               <tr>
-                <td data-label="Service Type:">Heavy Cargo</td>
+                <td data-label="Schedule:">Urgent</td>
               </tr>
 
               <tr>
                 <td data-label="Description:">
                   Two sealed bags of foreign rice
                 </td>
+              </tr>
+              <tr>
+                <td data-label="Pickup Date:">01-04-2022</td>
+              </tr>
+
+              <tr>
+                <td data-label="Pickup Time:">1pm</td>
               </tr>
             </tbody>
           </table>
@@ -82,20 +91,24 @@ const TrackDetails = () => {
               </tr>
 
               <tr>
-                <td data-label="Weight:">
-                  Jentafadwmu street 46 road to 30minures of terminus jos
-                  Nigeria country
-                </td>
+                <td data-label="Weight:">6kg</td>
               </tr>
 
               <tr>
-                <td data-label="Service Type:">Heavy Cargo</td>
+                <td data-label="Schedule:">Urgent</td>
               </tr>
 
               <tr>
                 <td data-label="Description:">
                   Two sealed bags of foreign rice
                 </td>
+              </tr>
+              <tr>
+                <td data-label="Pickup Date:">01-04-2022</td>
+              </tr>
+
+              <tr>
+                <td data-label="Pickup Time:">1pm</td>
               </tr>
             </tbody>
           </table>
