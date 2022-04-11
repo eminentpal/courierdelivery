@@ -70,7 +70,9 @@ const Home = () => {
       </div>
       {/* Services */}
       <div className="services">
-        <h2>How It Works</h2>
+        <div>
+          <h1>How It Works</h1>
+        </div>
         <div className="servicesBox">
           <div className="box">
             <span>
