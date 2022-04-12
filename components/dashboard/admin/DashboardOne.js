@@ -2,14 +2,16 @@ import React, { useEffect } from "react";
 import ShipmentHistory from "../ShipmentHistory";
 import ShipmentChart from "../ShipmentChart";
 import SideBar from "../SideBar";
+import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { myShipments } from "../../../redux/actions/shipActions";
 import { useSelector } from "react-redux";
 
-const User = () => {
+const DashboardOne = () => {
   const dispatch = useDispatch();
-
+  const router = useRouter();
   const { loading, myshipments } = useSelector((state) => state.myshipments);
+  const { user } = useSelector((state) => state.auth);
 
   const totalDelivered = myshipments?.filter((order) => {
     return order.paymentInfo.totalPrice === "Processing";
@@ -17,14 +19,22 @@ const User = () => {
 
   // console.log(totalDelivered);
   useEffect(() => {
+    if (user.role !== "admin") {
+      router.push("/");
+    }
     dispatch(myShipments());
-  }, []);
+  }, [user]);
 
   return (
     <div>
       <div className="dashboardCont">
         <div className="dash">
-          <SideBar dashboard="Dashboard" track="Track" shipments="Shipments" />
+          <SideBar
+            dashboard="Dashboard"
+            track="Track"
+            user="Users"
+            shipments="Shipments"
+          />
         </div>
         <div className="dashBody">
           <h2>Dashboard Overview</h2>
@@ -33,30 +43,25 @@ const User = () => {
               <div className="card-1">
                 <div>
                   <span>N0.000</span>
-                  <h4>Total Spent</h4>
+                  <h4>Earnings</h4>
                 </div>
               </div>
               <div className="card-2">
                 <div>
-                  <span>{myshipments?.length}</span>
+                  <span>2,340</span>
                   <h4>Shipments</h4>
                 </div>
               </div>
               <div className="card-3">
                 <div>
-                  {totalDelivered?.length === 0 ? (
-                    <span>0</span>
-                  ) : (
-                    <span>{totalDelivered}</span>
-                  )}
-
+                  <span>2,203</span>
                   <h4>Delivered</h4>
                 </div>
               </div>
               <div className="card-4">
                 <div>
                   <span>23,394</span>
-                  <h4>Pending</h4>
+                  <h4>Users</h4>
                 </div>
               </div>
             </div>
@@ -89,4 +94,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default DashboardOne;

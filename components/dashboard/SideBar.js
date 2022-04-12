@@ -118,7 +118,7 @@ c-245 3 -253 3 -253 -16z m407 -52 c49 -29 67 -73 67 -160 0 -120 -36 -174
           {props.dashboard && <li>{props.dashboard}</li>}
           {props.shipments && <li>{props.shipments}</li>}
           {props.track && <li>{props.track}</li>}
-          {props.user && <li>{props.user}</li>}
+          {props.user && user.role === "admin" && <li>{props.user}</li>}
         </ul>
       </div>
       <div className="dashMenu">

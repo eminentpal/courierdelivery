@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Dashboard from "../components/dashboard/admin/Dashboard";
+import DashboardOne from "../components/dashboard/admin/DashboardOne";
 import { wrapper } from "../redux/store";
 import { LoadUser } from "../redux/actions/userActions";
 import { Cookie } from "next-cookie";
@@ -22,7 +22,7 @@ const dashboard = () => {
   }
   return (
     <div>
-      <Dashboard />
+      <DashboardOne />
     </div>
   );
 };

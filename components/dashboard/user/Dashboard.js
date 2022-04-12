@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import ShipmentHistory from "../ShipmentHistory";
 import ShipmentChart from "../ShipmentChart";
 import SideBar from "../SideBar";
-import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { myShipments } from "../../../redux/actions/shipActions";
 import { useSelector } from "react-redux";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
+
   const { loading, myshipments } = useSelector((state) => state.myshipments);
   const { user } = useSelector((state) => state.auth);
 
@@ -19,13 +18,9 @@ const Dashboard = () => {
 
   // console.log(totalDelivered);
   useEffect(() => {
-    if (user.role !== "admin") {
-      router.push("/");
-    }
     dispatch(myShipments());
-  }, [user]);
+  }, []);
 
- 
   return (
     <div>
       <div className="dashboardCont">
@@ -42,27 +37,43 @@ const Dashboard = () => {
           <div className="layout-1">
             <div className="overview">
               <div className="card-1">
-                <div>
-                  <span>N0.000</span>
-                  <h4>Earnings</h4>
-                </div>
+                {user?.role !== "admin" ? (
+                  <div>
+                    <span>N0.000</span>
+                    <h4>Total Spent</h4>
+                  </div>
+                ) : (
+                  <div>
+                    <span>N0.000</span>
+                    <h4>Earnings</h4>
+                  </div>
+                )}
               </div>
               <div className="card-2">
                 <div>
-                  <span>2,340</span>
+                  <span>{myshipments?.length}</span>
                   <h4>Shipments</h4>
                 </div>
               </div>
               <div className="card-3">
                 <div>
-                  <span>2,203</span>
-                  <h4>Delivered</h4>
+                  {totalDelivered?.length === 0 ? (
+                    <>
+                      <span>0</span>
+                      <h4>Delivered</h4>
+                    </>
+                  ) : (
+                    <>
+                      <span>{totalDelivered}</span>
+                      <h4>Earnings</h4>
+                    </>
+                  )}
                 </div>
               </div>
               <div className="card-4">
                 <div>
                   <span>23,394</span>
-                  <h4>Users</h4>
+                  <h4>Pending</h4>
                 </div>
               </div>
             </div>

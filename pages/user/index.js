@@ -1,14 +1,13 @@
 import React from "react";
-import Newuser from "../../components/dashboard/user/User";
 import { wrapper } from "../../redux/store";
 import { LoadUser } from "../../redux/actions/UserActions";
-
 import { Cookie } from "next-cookie";
+import Dashboard from "../../components/dashboard/user/Dashboard";
 
 const index = () => {
   return (
     <div>
-      <Newuser />
+      <Dashboard />
     </div>
   );
 };
@@ -26,7 +25,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       if (!token) {
         return {
           redirect: {
-            destination: "/user/login",
+            destination: "/login",
             permanent: false,
           },
         };
