@@ -66,10 +66,7 @@ const Signup = () => {
 
         <div className="signupHeader">
           <h4 className={"activeH3"}>Sign Up</h4>
-          <h4
-            className={"inactiveH3"}
-            onClick={() => router.push("/user/login")}
-          >
+          <h4 className={"inactiveH3"} onClick={() => router.push("/login")}>
             Sign In
           </h4>
         </div>

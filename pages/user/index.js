@@ -35,3 +35,5 @@ export const getServerSideProps = wrapper.getServerSideProps(
     }
 );
 export default index;
+
+index.getLayout = (page) => <>{page}</>;

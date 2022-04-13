@@ -15,27 +15,45 @@ const signup = () => {
 
 export default signup;
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ req }) => {
-      const cookies = Cookie.fromApiRoute(req);
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   (store) =>
+//     async ({ req }) => {
+//       const cookies = Cookie.fromApiRoute(req);
 
-      const token = cookies.get("token");
-      // const sess = await getSession({ req });
+//       const token = cookies.get("token");
+//       // const sess = await getSession({ req });
 
-      console.log(token);
+//       console.log(token);
 
-      if (token) {
-        return {
-          redirect: {
-            destination: "/",
-            permanent: false,
-          },
-        };
-      }
+//       if (token) {
+//         return {
+//           redirect: {
+//             destination: "/",
+//             permanent: false,
+//           },
+//         };
+//       }
 
-      await store.dispatch(loadUser(req, token));
-    }
-);
+//       // await store.dispatch(loadUser(req, token));
+//     }
+// );
+
+export function getServerSideProps(context) {
+  // const sess = await getSession({ req });
+
+  const token = context.req.headers.cookie;
+
+  if (token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 signup.getLayout = (page) => <>{page}</>;
